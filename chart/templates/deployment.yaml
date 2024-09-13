@@ -36,6 +36,9 @@ spec:
       imagePullSecrets:
 {{ toYaml .Values.imagePullSecrets | indent 6 }}
 {{- end }}
+{{- if .Values.nodeSelector }}
+      nodeSelector: {{ toYaml .Values.global.nodeSelector | indent 6 }}
+{{- end }}
       affinity:
         podAntiAffinity:
 {{- if eq .Values.antiAffinity "required" }}
